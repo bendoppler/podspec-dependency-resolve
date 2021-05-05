@@ -3,7 +3,7 @@ require_relative 'lib/pod/target/version'
 Gem::Specification.new do |spec|
   spec.name          = "pod-dependency-resolve"
   spec.license       = "MIT"
-  spec.version       = Pod::Dependency::Resolve::VERSION
+  spec.version       = Pod::Target::VERSION
   spec.authors       = ["Bao Do"]
   spec.email         = ["baodo789@gmail.com"]
 

@@ -26,14 +26,12 @@ module Pod
                            desc: "Set workspace path, if not set will use current directory"
       method_option :output, type: :string,
                            desc: "Set output path of csv file, if not set will use current directory"
-      method_option :filter, type: :string, banner: "expression"
-                           desc: "If set, filter targets which name matches the regular expression"
-      def resolve-dependency(*)
+      def resolve_dependency(*)
         if options[:help]
           invoke :help, ['resolve-dependency']
         else
           require_relative 'commands/resolve/dependency'
-          Pod::Target::Commands::Resolve::Dependency.new(options).execute
+          Pod::Target::Commands::Dependency.new(options).execute
         end
       end
     end
