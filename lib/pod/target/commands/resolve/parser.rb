@@ -1,11 +1,17 @@
 require 'xcodeproj'
+require 'tty-prompt'
 
 module Pod
     module Target
         module Commands
             class Parser
-                attr_reader :workspace, :workspace_dir, :regex
+                attr_reader :workspace, :workspace_dir
                 def initialize(workspace_path)
+                    if workspace_path.nil?
+                        prompt = TTY::Prompt.new
+                        prompt.error("Error! Cannot find workspace path")
+                        exit 1
+                    end
                     @workspace_dir = File.dirname(workspace_path)
                     @workspace = Xcodeproj::Workspace.new_from_xcworkspace(workspace_path)
                 end

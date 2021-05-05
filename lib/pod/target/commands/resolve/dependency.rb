@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../command'
+require 'tty-prompt'
 
 module Pod
   module Target
@@ -18,11 +19,12 @@ module Pod
             @xcworkspace ||= XCWorkspace.find_workspace
             @output = @options[:output]
             @output ||= '.'
-            puts "Finding targets' dependencies and resolving them..."
             parse
         end
 
         def parse
+          prompt = TTY::Prompt.new
+          prompt.ok("Finding targets' dependencies and resolving them...")
           parser = Parser.new(@xcworkspace)
           targets = parser.all_targets
           graph = Pod::Target::Commands::Graph.new
@@ -52,7 +54,7 @@ module Pod
               }
             end
           end
-          puts "File is write at: " + directory
+          prompt.ok("File is write at: " + directory)
         end
       end
     end
