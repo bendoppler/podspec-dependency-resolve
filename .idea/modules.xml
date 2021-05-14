@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Learning/pandan/.idea/pandan.iml" filepath="$USER_HOME$/Learning/pandan/.idea/pandan.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/pod-target.iml" filepath="$PROJECT_DIR$/.idea/pod-target.iml" />
     </modules>
   </component>

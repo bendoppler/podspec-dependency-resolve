@@ -19,13 +19,15 @@ module Pod
             @xcworkspace ||= XCWorkspace.find_workspace
             @output = @options[:output]
             @output ||= '.'
+            @filter = @options[:filter]
+            @filter ||= '.*'
             parse
         end
 
         def parse
           prompt = TTY::Prompt.new
           prompt.ok("Finding targets' dependencies and resolving them...")
-          parser = Parser.new(@xcworkspace)
+          parser = Parser.new(@xcworkspace, @filter)
           targets = parser.all_targets
           graph = Pod::Target::Commands::Graph.new
           graph.add_target_info(targets)
