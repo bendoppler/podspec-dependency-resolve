@@ -2,6 +2,10 @@
 
 Find dependencies between targets in your pod project, and output the csv file which shows dependencies that can be removed from podspec of the target.
 
+X->Y means X depends on Y
+![Example image](./images/image.png)
+Like the image above, we have: A->B->C and A->C. We will output the file csv named "remove_dependency.csv" to show the targets that can be removed from A. For this example, it will be like this:
+A,C. The first column is the target, and the following targets are targets can be removed.
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -19,9 +23,16 @@ Or install it yourself as:
     $ gem install pod-target
 
 ## Usage
+pod-target resolve-dependency
 
-TODO: Write usage instructions here
+Options:\
+      [--workspace=WORKSPACE]  # Set workspace path, if not set will use current directory\
+      \
+      [--output=OUTPUT]        # Set output path of csv file, if not set will use current directory\
+      \
+      [--filter=expression]    # If set, filter targets which name matches the regular expression\
 
+Workspace path and output path can be absolute path or relative path
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
