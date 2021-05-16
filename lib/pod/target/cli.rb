@@ -19,7 +19,7 @@ module Pod
       end
       map %w(--version -v) => :version
 
-      desc 'target', 'Find dependency of the target'
+      desc 'target', 'Find dependencies of the target'
       method_option :root, type: :string,
                     desc: 'Set name of the root target, must be set'
       method_option :workspace, type: :string,
