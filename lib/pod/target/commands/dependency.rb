@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require_relative '../../command'
+require_relative '../command'
 require 'tty-prompt'
 
 module Pod
   module Target
     module Commands
       class Dependency < Pod::Target::Command
-        require_relative './xcworkspace'
-        require_relative './parser'
-        require_relative './graph'
+        require_relative './resolve/xcworkspace'
+        require_relative './resolve/parser'
+        require_relative './resolve/graph'
         def initialize(options)
           @options = options
         end
@@ -36,12 +36,11 @@ module Pod
           nodes = graph.nodes
           nodes.each do |_, value|
             level_map = {}
-            graph.bfs(value, level_map, 0)
+            graph.dfs(value, level_map, 0)
             removes = []
             value.neighbors.each do |neighbor|
               if level_map[neighbor.name] > 1
                 removes << neighbor.name
-
               end
             end
             if removes.size > 0

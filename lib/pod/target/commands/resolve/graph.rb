@@ -52,7 +52,7 @@ module Pod
                     source.add_neighbor(destination)
                 end
 
-                def bfs(node, level_map, depth)
+                def dfs(node, level_map, depth)
                     return if depth == 3
                     name = node.name                    
                     if level_map.key?(name)
@@ -61,7 +61,19 @@ module Pod
                         level_map[name] = depth
                     end
                     node.neighbors.each do |neighbor|
-                        bfs(neighbor, level_map, depth+1)
+                        dfs(neighbor, level_map, depth+1)
+                    end
+                end
+
+                def dfs2(node, level_map, depth)
+                    name = node.name
+                    if level_map.key?(name)
+                        level_map[name] = [level_map[name], depth].max
+                    else
+                        level_map[name] = depth
+                    end
+                    node.neighbors.each do |neighbor|
+                        dfs2(neighbor, level_map, depth+1)
                     end
                 end
             end

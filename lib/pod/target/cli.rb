@@ -19,9 +19,19 @@ module Pod
       end
       map %w(--version -v) => :version
 
+      desc 'target', 'Find dependency of the target'
+      method_option :root, type: :string,
+                    desc: 'Set name of the root target, must be set'
+      method_option :workspace, type: :string,
+                    desc: "Set workspace path, if not set will use current directory"
+      method_option :output, type: :string,
+                    desc: "Set output path of csv file, if not set will use current directory"
+      def target(*)
+        require_relative 'commands/target'
+        Pod::Target::Commands::Target.new(options).execute
+      end
+
       desc 'resolve-dependency', "Resolve dependencies of pod's targets"
-      method_option :help, aliases: '-h', type: :boolean,
-                           desc: 'Display usage information'
       method_option :workspace, type: :string,
                            desc: "Set workspace path, if not set will use current directory"
       method_option :output, type: :string,
@@ -29,12 +39,8 @@ module Pod
       method_option :filter, type: :string, banner: "expression",
                           desc: "If set, filter targets which name matches the regular expression"
       def resolve_dependency(*)
-        if options[:help]
-          invoke :help, ['resolve-dependency']
-        else
-          require_relative 'commands/resolve/dependency'
-          Pod::Target::Commands::Dependency.new(options).execute
-        end
+        require_relative 'commands/dependency'
+        Pod::Target::Commands::Dependency.new(options).execute
       end
     end
   end

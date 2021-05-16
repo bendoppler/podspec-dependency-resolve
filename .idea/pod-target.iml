@@ -22,11 +22,13 @@
     <orderEntry type="library" scope="PROVIDED" name="necromancer (v0.3.0, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pastel (v0.6.1, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v12.3.3, RVM: ruby-2.7.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.3, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec (v3.10.0, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.10.1, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.10.1, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.10.2, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.10.2, RVM: ruby-2.7.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-graphviz (v1.2.5, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.1.0, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tty (v0.5.0, RVM: ruby-2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tty-color (v0.3.0, RVM: ruby-2.7.0) [gem]" level="application" />
@@ -49,16 +51,16 @@
     <option name="myRootTask">
       <RakeTaskImpl id="rake">
         <subtasks>
-          <RakeTaskImpl description="Build pod-target-0.1.2.gem into the pkg directory" fullCommand="build" id="build" />
+          <RakeTaskImpl description="Build pod-target-0.1.4.gem into the pkg directory" fullCommand="build" id="build" />
           <RakeTaskImpl description="Remove any temporary products" fullCommand="clean" id="clean" />
           <RakeTaskImpl description="Remove any generated files" fullCommand="clobber" id="clobber" />
-          <RakeTaskImpl description="Build and install pod-target-0.1.2.gem into system gems" fullCommand="install" id="install" />
+          <RakeTaskImpl description="Build and install pod-target-0.1.4.gem into system gems" fullCommand="install" id="install" />
           <RakeTaskImpl id="install">
             <subtasks>
-              <RakeTaskImpl description="Build and install pod-target-0.1.2.gem into system gems without network access" fullCommand="install:local" id="local" />
+              <RakeTaskImpl description="Build and install pod-target-0.1.4.gem into system gems without network access" fullCommand="install:local" id="local" />
             </subtasks>
           </RakeTaskImpl>
-          <RakeTaskImpl description="Create tag v0.1.2 and build and push pod-target-0.1.2.gem to rubygems.org" fullCommand="release[remote]" id="release[remote]" />
+          <RakeTaskImpl description="Create tag v0.1.4 and build and push pod-target-0.1.4.gem to rubygems.org" fullCommand="release[remote]" id="release[remote]" />
           <RakeTaskImpl description="Run RSpec code examples" fullCommand="spec" id="spec" />
           <RakeTaskImpl description="" fullCommand="default" id="default" />
           <RakeTaskImpl description="" fullCommand="release" id="release" />
