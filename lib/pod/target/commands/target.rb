@@ -40,9 +40,9 @@ module Pod
           tmp_file = File.join(dir, '/dependencies.gv')
           save_gv(graphviz_data(graph), tmp_file)
           graphviz_graph = GraphViz.parse(tmp_file)
-          save_png(graphviz_graph, 'dependencies.png')
+          save_png(graphviz_graph, @root + '-dependencies.png')
           FileUtils.remove_file(tmp_file)
-          prompt.ok("File is write at: " + dir + "/dependencies.png")
+          prompt.ok("File is write at: " + dir + "/" + @root + "-dependencies.png")
         end
 
         def save_gv(graphviz_data, filename)
@@ -54,8 +54,12 @@ module Pod
         end
 
         def graphviz_data(graph)
-          node = graph.nodes.values.find { |node| node.name =~ /#{@root}/ }
-          unless  node.nil?
+          node = graph.nodes.values.find { |node| node.name == @root }
+          if node.nil?
+            prompt = TTY::Prompt.new
+            prompt.error("Cannot find root target")
+            exit 1
+          else
             graphviz = GraphViz.new(type: :digraph)
             level_map = {}
             graph.dfs2(node, level_map, 0)
