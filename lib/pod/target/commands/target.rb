@@ -40,7 +40,8 @@ module Pod
           tmp_file = File.join(dir, '/dependencies.gv')
           save_gv(graphviz_data(graph), tmp_file)
           graphviz_graph = GraphViz.parse(tmp_file)
-          save_png(graphviz_graph, @root + '-dependencies.png')
+          file = File.join(dir, '/' + @root + '-dependencies.png')
+          save_png(graphviz_graph, file)
           FileUtils.remove_file(tmp_file)
           prompt.ok("File is write at: " + dir + "/" + @root + "-dependencies.png")
         end
