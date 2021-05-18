@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pod-target (0.2.0)
+    pod-target (0.2.1)
       thor
       xcodeproj (~> 1.7)
 
