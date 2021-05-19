@@ -62,24 +62,22 @@ module Pod
             exit 1
           else
             graphviz = GraphViz.new(type: :digraph)
-            level_map = {}
-            graph.dfs2(node, level_map, 0)
-            visited = Set.new([])
-            dfs(graphviz, node, visited, level_map)
+            dfs(graphviz, node, graph)
             graphviz
           end
         end
 
-        def dfs(graphviz, node, visited, level_map)
-          return if visited.include?(node.name)
-          visited.add(node.name)
-          depth = level_map[node.name]
+        def dfs(graphviz, node, graph)
           target_node = graphviz.add_node(node.name)
+          level_map = {}
+          puts "Parent: #{node.name}"
+          graph.dfs(node, level_map, 0)
           node.neighbors.each do |dependency|
-            if level_map[dependency.name] == depth+1
+            puts "Dependency: #{dependency.name}"
+            if level_map[dependency.name] == 1
               dep_node = graphviz.add_node(dependency.name)
               graphviz.add_edge(target_node, dep_node)
-              dfs(graphviz, dependency, visited, level_map)
+              dfs(graphviz, node, graph)
             end
           end
         end

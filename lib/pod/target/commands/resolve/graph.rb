@@ -64,18 +64,6 @@ module Pod
                         dfs(neighbor, level_map, depth+1)
                     end
                 end
-
-                def dfs2(node, level_map, depth)
-                    name = node.name
-                    if level_map.key?(name)
-                        level_map[name] = [level_map[name], depth].max
-                    else
-                        level_map[name] = depth
-                    end
-                    node.neighbors.each do |neighbor|
-                        dfs2(neighbor, level_map, depth+1)
-                    end
-                end
             end
         end
     end
