@@ -24,6 +24,8 @@ module Pod
                     desc: 'Set name of the root target, must be set'
       method_option :workspace, type: :string,
                     desc: "Set workspace path, if not set will use current directory"
+      method_option :max_depth, type: :numeric,
+                    desc: "Set max depth of the graph, if not set will traverse the whole graph"
       method_option :output, type: :string,
                     desc: "Set output path of csv file, if not set will use current directory"
       def target(*)
