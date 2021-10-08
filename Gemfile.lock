@@ -98,6 +98,7 @@ DEPENDENCIES
   rspec (~> 3.0)
   ruby-graphviz
   tty
+  tty-prompt
 
 BUNDLED WITH
-   2.1.2
+   2.1.4
