@@ -10,6 +10,9 @@ A,C. The first column is the target, and the following targets are targets can b
 Moreover, we also draw dependency graph for specific target based on this idea. We remove all dependencies lika A->C, so we can see dependencie between targets clearer.
 ## Installation
 
+Install graphviz:
+https://graphviz.org/download/
+
 Add this line to your application's Gemfile:
 
 ```ruby
