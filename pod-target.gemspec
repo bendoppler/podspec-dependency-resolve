@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'xcodeproj', '~> 1.7'
   spec.add_dependency "thor"
+  spec.add_dependency "ruby-graphviz"
+  spec.add_dependency "tty-prompt"
 end
